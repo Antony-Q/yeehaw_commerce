@@ -41,10 +41,16 @@ This application is covered by the MIT license.
 
   
 ## Installation  
-Run the following command at the root of your project: npm install. Ensure that you have MySQL2 installed as well.<br>
+Navigate to the root folder in your terminal
+Run the following command at the root of your project: npm install.
+Install mysql2.
+Start MySQL and type in "SOURCE ./db/schema.sql;" then "USE ecommerce_db;"
+Seed the database by typing in "npm run seed" and then start the server with "npm start"
+Open insomnia app and make GET, POST, PUT, and DELETE requests to interact with database, via the URL Request form.
   
 ## Screenshot
 ![screenshot](screenshot.PNG)
+Video of app in action [here](https://github.com/Antony-Q/yeehaw_commerce)
   
 ## Questions  
 GitHub: [Antony-Q](https://github.com/Antony-Q/capitalist-capitulator)<br>
