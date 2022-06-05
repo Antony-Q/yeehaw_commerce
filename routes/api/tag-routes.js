@@ -1,44 +1,12 @@
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
-// The `/api/tags` endpoint
-
-router.get('/', (req, res) => {
-  // find all tags
-  // be sure to include its associated Product data
-});
-
-router.get('/:id', (req, res) => {
-  // find a single tag by its `id`
-  // be sure to include its associated Product data
-});
-
-router.post('/', (req, res) => {
-  // create a new tag
-});
-
-router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
-});
-
-router.delete('/:id', (req, res) => {
-  // delete on tag by its `id` value
-});
-
-module.exports = router;
-
-
-
-
-const router = require('express').Router();
-const { Category, Product } = require('../../models');
-
 router.get('/', (req, res) => {
 
-  Category.findAll({
+  Tag.findAll({
     include: [Product]
   })
-    .then(dbCategoryData => res.json(dbCategoryData))
+    .then(dbTagData => res.json(dbTagData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -46,22 +14,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Category.findOne({
+  Tag.findOne({
     include: [Product],
     where: {
       id: req.params.id
     }
   })
-
-    .then(dbCategoryData => {
-      if (!dbCategoryData) {
-        res.status(404).json({ message: 'Category not found with this id!' });
+    .then(dbTagData => {
+      if (!dbTagData) {
+        res.status(404).json({ message: 'Tag not found' });
         return;
       }
-
-      res.json(dbCategoryData);
+      res.json(dbTagData);
     })
-
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -69,12 +34,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Category.create({
-
-    category_name: req.body.category_name
+  Tag.create({
+    tag_name: req.body.tag_name
   })
-
-    .then((dbCategoryData) => res.json(dbCategoryData))
+    .then((dbTagData) => res.json(dbTagData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -82,19 +45,17 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  Category.update(req.body, {
+  Tag.update(req.body, {
     where: {
       id: req.params.id
     }
   })
-
-    .then(dbCategoryData => {
-      if (!dbCategoryData[0]) {
-        res.status(404).json({ message: 'No category with this id!' });
+    .then(dbTagData => {
+      if (!dbTagData[0]) {
+        res.status(404).json({ message: 'Tag not found' });
         return;
       }
     })
-
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -102,25 +63,22 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  Category.destroy({
+  Tag.destroy({
     where: {
       id: req.params.id
     }
   })
-
-    .then(dbCategoryData => {
-      if (!dbCategoryData) {
-        res.status(404).json({ message: 'No category found with this id!' });
+    .then(dbTagData => {
+      if (!dbTagData) {
+        res.status(404).json({ message: 'Tag not found' });
         return;
       }
-      res.json(dbCategoryData);
+      res.json(dbTagData);
     })
-
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;
