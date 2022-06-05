@@ -19,6 +19,8 @@ My challenge was to build the back end for an e-commerce site. This required a w
 ## Deployment  
 Download the application folder. Use Terminal to navigate to the project directory and type the following: `npm start`. May require `npm install` first, if an error occurs. If you need some guidance on installing these dependencies, please refer to the links below.
 
+You can view a video demonstrating the app's usage [here](https://drive.google.com/file/d/1p54GHRIPRRx3Yy-7-g-q4lhVqf-wsJOm/view)
+
 ## Dependencies
 * [How to Install Node.js and NPM on Windows](https://phoenixnap.com/kb/install-node-js-npm-on-windows)
 * [How to install Node.js and npm on macOS](https://www.newline.co/@Adele/how-to-install-nodejs-and-npm-on-macos--22782681)
